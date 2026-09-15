@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Harf-Fannan Regular — وزن واحد متاح فقط؛ الأوزان الأثقل (600-900) تُصنَّع
+   تلقائياً بواسطة المتصفح (font-synthesis) لإعطاء مظهر Extra Bold */
+@font-face {
+  font-family: "Harf-Fannan Regular";
+  src: url("/fonts/HarfFannan-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Harf-Fannan Regular", "Segoe UI", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 23px;
+}
+
+body {
+  font-family: "Harf-Fannan Regular", "Segoe UI", system-ui, sans-serif;
+  font-weight: 700;
+  font-synthesis-weight: auto;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(148 163 184 / 0.6);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: rgb(71 85 105 / 0.8);
+}
