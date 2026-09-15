@@ -14,6 +14,7 @@ const dashboardRoutes = require('./routes/dashboard');
 const app = express();
 
 app.disable('x-powered-by');
+app.set('trust proxy', 1);
 
 // رؤوس أمان HTTP قياسية. لا تُخدَّم أي صفحات HTML من هذا الخادم (API + ملفات فقط)
 // لذا تُعطَّل سياسة CSP الافتراضية ويُسمح صراحة بالوصول للموارد من أصل الواجهة الأمامية
