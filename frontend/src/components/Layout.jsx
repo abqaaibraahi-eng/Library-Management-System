@@ -16,7 +16,7 @@ export default function Layout() {
           <img
             src={orgSeal}
             alt=""
-            className="pointer-events-none select-none fixed inset-0 m-auto w-[70vw] h-[70vw] max-w-[520px] max-h-[520px] object-contain opacity-[0.06] dark:opacity-[0.08] z-0"
+            className="pointer-events-none select-none fixed inset-0 m-auto w-[70vw] h-[70vw] max-w-[520px] max-h-[520px] object-contain opacity-[0.025] dark:opacity-[0.035] z-0"
           />
           <div className="relative z-10">
             <Outlet />
