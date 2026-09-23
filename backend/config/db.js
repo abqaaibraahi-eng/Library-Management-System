@@ -11,6 +11,8 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
   charset: 'utf8mb4_unicode_ci',
+  // Managed MySQL providers (Aiven, Railway, TiDB Cloud, ...) require TLS.
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
 });
 
 module.exports = pool;
