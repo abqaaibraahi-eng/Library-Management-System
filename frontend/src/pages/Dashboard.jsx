@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FiBookOpen, FiUsers, FiHome, FiTag, FiFile, FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 import api from "../api/client";
 import { PageSpinner } from "../components/ui/Spinner";
 import EmptyState from "../components/ui/EmptyState";
+import orgSeal from "../assets/al-fataah-seal.jpg";
 
 const cards = [
-  { key: "total_books", label: "إجمالي الكتاب", icon: FiBookOpen, color: "emerald", to: "/books" },
-  { key: "total_authors", label: "إجمالي المؤلفين", icon: FiUsers, color: "sky", to: "/authors" },
-  { key: "total_publishers", label: "إجمالي دور النشر", icon: FiHome, color: "amber", to: "/publishers" },
-  { key: "total_arts", label: "إجمالي الفنون", icon: FiTag, color: "violet", to: "/arts" },
-  { key: "total_pdfs", label: "إجمالي ملفات PDF", icon: FiFile, color: "rose", to: "/books" },
+  { key: "total_books", label: "إجمالي الكتاب", color: "emerald", to: "/books" },
+  { key: "total_authors", label: "إجمالي المؤلفين", color: "sky", to: "/authors" },
+  { key: "total_publishers", label: "إجمالي دور النشر", color: "amber", to: "/publishers" },
+  { key: "total_arts", label: "إجمالي الفنون", color: "violet", to: "/arts" },
+  { key: "total_pdfs", label: "إجمالي ملفات PDF", color: "rose", to: "/books" },
 ];
 
 const colorClasses = {
@@ -48,8 +49,8 @@ export default function Dashboard() {
             to={c.to}
             className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-5 hover:shadow-md transition group"
           >
-            <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${colorClasses[c.color]}`}>
-              <c.icon size={20} />
+            <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 overflow-hidden ${colorClasses[c.color]}`}>
+              <img src={orgSeal} alt="" className="w-full h-full object-cover" />
             </div>
             <p className="text-3xl font-extrabold text-slate-800 dark:text-slate-100">{stats?.[c.key] ?? 0}</p>
             <p className="text-slate-500 dark:text-slate-400 text-base font-bold mt-1">{c.label}</p>
