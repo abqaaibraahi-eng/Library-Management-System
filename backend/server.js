@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require('path');
 
 const { apiLimiter } = require('./middleware/rateLimiters');
 const authRoutes = require('./routes/auth');
@@ -46,6 +47,16 @@ app.use('/api/books', booksRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
+
+// In a Docker Space the backend also serves the built Vite application.
+const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
+app.use(express.static(frontendDist));
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api/')) return next();
+  res.sendFile(path.join(frontendDist, 'index.html'), (error) => {
+    if (error) next();
+  });
+});
 
 // معالج الأخطاء العام — لا يُسرَّب تفاصيل الخطأ الداخلية في بيئة الإنتاج
 app.use((err, req, res, next) => {

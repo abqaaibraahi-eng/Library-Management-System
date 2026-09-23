@@ -1,3 +1,12 @@
+---
+title: Library Management System
+emoji: 📚
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+---
+
 # نظام إدارة المكتبة (Arabic Library Management System)
 
 Full-stack library management system with a fully Arabic, RTL user interface.
@@ -61,6 +70,18 @@ npm run dev
 ```
 
 Open http://localhost:5173 in your browser.
+
+## Cloud deployment (Hugging Face Spaces)
+
+The repository includes a `Dockerfile` for deploying the frontend and API as one Docker Space.
+
+1. Create a new Hugging Face Space and choose **Docker** as the SDK.
+2. Upload or push this repository to the Space.
+3. Create a managed MySQL database (for example, Aiven, Railway, or TiDB Cloud), then import `backend/db/schema.sql` into it.
+4. Add these Space secrets/variables: `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `JWT_SECRET`, `DEFAULT_ADMIN_USERNAME`, and `DEFAULT_ADMIN_PASSWORD`.
+5. Set `NODE_ENV=production` and `FRONTEND_URL` to the public Space URL, then run the seed command once from a trusted environment with the same database variables: `npm run seed` from `backend`.
+
+The Space listens on port `7860`. The frontend uses the same-origin `/api` path in production, so no frontend URL secret is needed. Database records are persistent in the managed MySQL service. PDF files currently use the container filesystem; use a persistent Space storage volume or move PDF storage to object storage before relying on cloud redeployments.
 
 ## Default admin login
 
