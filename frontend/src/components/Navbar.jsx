@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiMenu, FiSun, FiMoon, FiLogOut, FiChevronDown } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
-import orgSeal from "../assets/al-fataah-seal.jpg";
+import userAvatar from "../assets/user-avatar.jpg";
 
 export default function Navbar({ onMenuClick }) {
   const { user, logout } = useAuth();
@@ -34,7 +34,7 @@ export default function Navbar({ onMenuClick }) {
             onClick={() => setMenuOpen((o) => !o)}
             className="flex items-center gap-2 pl-2 pr-1 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition"
           >
-            <img src={orgSeal} alt="مركز الفتاح للعلوم الشرعية" className="w-9 h-9 rounded-full" />
+            <img src={userAvatar} alt="" className="w-9 h-9 rounded-full object-cover object-top" />
             <span className="hidden sm:block text-base font-bold text-slate-700 dark:text-slate-200">
               {user?.full_name || user?.username}
             </span>
