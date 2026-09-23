@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { FiUser, FiLock, FiEye, FiEyeOff } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
 import { useToast } from "../context/ToastContext";
-import orgSeal from "../assets/al-fataah-seal.svg";
+import orgSeal from "../assets/al-fataah-seal.jpg";
 
 export default function Login() {
   const [username, setUsername] = useState("");

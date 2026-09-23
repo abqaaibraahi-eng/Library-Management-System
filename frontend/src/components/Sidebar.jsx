@@ -1,22 +1,17 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  FiGrid,
-  FiBookOpen,
-  FiUsers,
-  FiTag,
-  FiHome,
-  FiFileText,
-  FiChevronDown,
-  FiX,
-} from "react-icons/fi";
-import orgSeal from "../assets/al-fataah-seal.svg";
+import { FiChevronDown, FiX } from "react-icons/fi";
+import orgSeal from "../assets/al-fataah-seal.jpg";
+
+function NavIcon({ className = "" }) {
+  return <img src={orgSeal} alt="" className={`rounded-full object-cover ${className}`} />;
+}
 
 const registrationLinks = [
-  { to: "/arts", label: "تسجيل الفنون", icon: FiTag },
-  { to: "/authors", label: "تسجيل المؤلفين", icon: FiUsers },
-  { to: "/publishers", label: "تسجيل دور النشر", icon: FiHome },
-  { to: "/books", label: "تسجيل الكتاب", icon: FiBookOpen },
+  { to: "/arts", label: "تسجيل الفنون" },
+  { to: "/authors", label: "تسجيل المؤلفين" },
+  { to: "/publishers", label: "تسجيل دور النشر" },
+  { to: "/books", label: "تسجيل الكتاب" },
 ];
 
 const reportLinks = [
@@ -33,7 +28,7 @@ function NavGroup({ label, icon: Icon, links, defaultOpen, closeMobile }) {
         className="w-full flex items-center justify-between px-3 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700/60 text-lg font-bold transition"
       >
         <span className="flex items-center gap-3">
-          <Icon size={21} />
+          <Icon className="w-[21px] h-[21px]" />
           {label}
         </span>
         <FiChevronDown className={`transition-transform ${open ? "rotate-180" : ""}`} size={18} />
@@ -98,12 +93,12 @@ export default function Sidebar({ open, onClose }) {
               }`
             }
           >
-            <FiGrid size={21} />
+            <NavIcon className="w-[21px] h-[21px]" />
             لوحة التحكم
           </NavLink>
 
-          <NavGroup label="التسجيل" icon={FiBookOpen} links={registrationLinks} defaultOpen closeMobile={onClose} />
-          <NavGroup label="التقارير" icon={FiFileText} links={reportLinks} closeMobile={onClose} />
+          <NavGroup label="التسجيل" icon={NavIcon} links={registrationLinks} defaultOpen closeMobile={onClose} />
+          <NavGroup label="التقارير" icon={NavIcon} links={reportLinks} closeMobile={onClose} />
         </nav>
 
         <div className="px-5 py-4 border-t border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-400 dark:text-slate-500 text-center">

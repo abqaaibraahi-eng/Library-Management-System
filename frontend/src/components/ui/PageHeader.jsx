@@ -1,4 +1,5 @@
 import { FiPlus, FiSearch } from "react-icons/fi";
+import orgSeal from "../../assets/al-fataah-seal.jpg";
 
 export default function PageHeader({
   title,
@@ -13,9 +14,12 @@ export default function PageHeader({
   return (
     <div className="flex flex-col gap-4 mb-6">
       <div className="flex items-start justify-between flex-wrap gap-3">
-        <div>
-          <h1 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100">{title}</h1>
-          {subtitle && <p className="text-slate-500 dark:text-slate-400 text-base font-semibold mt-1">{subtitle}</p>}
+        <div className="flex items-center gap-3">
+          <img src={orgSeal} alt="" className="w-11 h-11 rounded-full object-cover shrink-0" />
+          <div>
+            <h1 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100">{title}</h1>
+            {subtitle && <p className="text-slate-500 dark:text-slate-400 text-base font-semibold mt-1">{subtitle}</p>}
+          </div>
         </div>
         {onAdd && (
           <button

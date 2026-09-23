@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiMenu, FiSun, FiMoon, FiLogOut, FiChevronDown } from "react-icons/fi";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
-import orgSeal from "../assets/al-fataah-seal.svg";
+import orgSeal from "../assets/al-fataah-seal.jpg";
 
 export default function Navbar({ onMenuClick }) {
   const { user, logout } = useAuth();
