@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FiChevronDown, FiX } from "react-icons/fi";
+import { FiChevronDown, FiX, FiGrid, FiEdit3, FiBarChart2 } from "react-icons/fi";
 import orgSeal from "../assets/al-fataah-seal.jpg";
-
-function NavIcon({ className = "" }) {
-  return <img src={orgSeal} alt="" className={`rounded-full object-cover ${className}`} />;
-}
 
 const registrationLinks = [
   { to: "/arts", label: "تسجيل الفنون" },
@@ -93,12 +89,12 @@ export default function Sidebar({ open, onClose }) {
               }`
             }
           >
-            <NavIcon className="w-[21px] h-[21px]" />
+            <FiGrid className="w-[21px] h-[21px]" />
             لوحة التحكم
           </NavLink>
 
-          <NavGroup label="التسجيل" icon={NavIcon} links={registrationLinks} defaultOpen closeMobile={onClose} />
-          <NavGroup label="التقارير" icon={NavIcon} links={reportLinks} closeMobile={onClose} />
+          <NavGroup label="التسجيل" icon={FiEdit3} links={registrationLinks} defaultOpen closeMobile={onClose} />
+          <NavGroup label="التقارير" icon={FiBarChart2} links={reportLinks} closeMobile={onClose} />
         </nav>
 
         <div className="px-5 py-4 border-t border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-400 dark:text-slate-500 text-center">
